@@ -53,29 +53,10 @@ class Iemocap:
 
         return wav_to_transcript
 
-
-    def _get_duration_dict(self):
-        csv_path = self.path + 'wav_2_duration.csv'
-        if os.path.isfile(csv_path):
-            return pd.read_csv(csv_path, header=None, index_col=0, squeeze=True).to_dict()
-
-        wav_2_duration = {}
-        files = os.listdir(self.path + '/wav/')
-        for f_name in tqdm(files):
-            y, sr = librosa.load(self.path + '/wav/' + f_name)
-            duration = librosa.get_duration(y=y, sr=sr)
-            wav_2_duration[f_name] = duration
-
-        df = pd.DataFrame.from_dict(wav_2_duration, orient='index')
-        df.to_csv('wav_2_duration.csv')
-
-        return wav_2_duration
-
-
     def get_df(self):
         file_2_transcript = self._get_transcript_dict()
         wav_2_label = self._get_label_dict()
-        wav_2_duration = self._get_duration_dict()
+        wav_2_duration = util._get_duration_dict(self.path)
         data = []
         for f_name in tqdm(os.listdir(self.path + '/wav/')):
             f_path = self.path + '/wav/' + f_name
