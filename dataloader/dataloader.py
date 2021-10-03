@@ -1,6 +1,6 @@
 import importlib
 
-from iemocap import Iemocap
+#from .iemocap import Iemocap
 
 class Dataloader:
     
@@ -16,10 +16,17 @@ class Dataloader:
         if hasattr(self, dataset):
             return getattr(self, dataset)
         else:
-            if dataset == 'iemocap':
-                cls = Iemocap
-            #mod_name = dataset
-            #cls = getattr(importlib.import_module(mod_name), dataset.capitalize())
+            #if dataset == 'iemocap':
+               # cls = Iemocap
+            mod_name = '.' + dataset
+            cls = getattr(importlib.import_module(mod_name), dataset.capitalize())
 
             setattr(self, dataset, cls(self.dataset_path))
             return getattr(self, dataset).df
+
+
+#loader = Dataloader('/Users/fellut/OneDrive - Sinch AB/datasets/')
+#loader = Dataloader('/Users/fellut/Desktop/SER/datasets/')
+
+#print(loader.load_dataset('iemocap'))
+

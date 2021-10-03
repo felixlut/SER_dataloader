@@ -2,7 +2,8 @@ import pandas as pd
 import os
 from tqdm import tqdm
 
-import util
+from . import util
+
 
 class Iemocap:
 
