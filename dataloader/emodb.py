@@ -30,7 +30,7 @@ class Emodb:
             act_id = f_name[:2]
             emo = f_name[5]
             emo = annotation_mapping[emo]
-            f_path = wav_path + os.sep + f_name
+            f_path = wav_path + f_name
             f_path = os.path.abspath(f_path)
 
             data.append({
