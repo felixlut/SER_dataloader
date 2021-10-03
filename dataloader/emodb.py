@@ -13,9 +13,10 @@ class Emodb:
 
 
     def get_df(self):
-        wav_2_duration = util._get_duration_dict(self.path + '/wav/', self.path + 'wav_2_duration.csv')
+        wav_path = self.path + '/wav/wav/'
+        wav_2_duration = util._get_duration_dict(wav_path, self.path + 'wav_2_duration.csv')
         data = []
-        for f_name in tqdm(os.listdir(self.path + '/wav/')):
+        for f_name in tqdm(os.listdir(wav_path)):
             act_id = f_name[:2]
             emo = f_name[5]
             f_path = self.path + os.sep + f_name
