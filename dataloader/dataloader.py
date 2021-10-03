@@ -12,11 +12,9 @@ class Dataloader:
         if dataset not in self.implemented_datasets:
             raise NotImplementedError("{} not in {}!".format(dataset, self.implemented_datasets))
 
-        if hasattr(self, dataset):
-            return getattr(self, dataset)
-        else:
+        if not hasattr(self, dataset):
             mod_name = '.' + dataset
             cls = getattr(importlib.import_module(mod_name, package='dataloader'), dataset.capitalize())
-
             setattr(self, dataset, cls(self.dataset_path))
-            return getattr(self, dataset).df
+        
+        return getattr(self, dataset).df
