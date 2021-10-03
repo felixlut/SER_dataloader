@@ -5,7 +5,7 @@ from tqdm import tqdm
 from . import util
 
 
-class CremaD:
+class Cremad:
 
     def __init__(self, top_path):
         self.path = top_path + 'cremad/'
