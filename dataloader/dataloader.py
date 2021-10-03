@@ -18,6 +18,3 @@ class Dataloader:
             setattr(self, dataset, cls(self.dataset_path))
         
         return getattr(self, dataset).df
-
-
-afasgd dgslkeög jflsdku dkjg lkdf ksdjhg lksd skdjg sldkjfg sdljg belg
