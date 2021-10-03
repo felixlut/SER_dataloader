@@ -1,6 +1,5 @@
 import importlib
 
-#from .iemocap import Iemocap
 
 class Dataloader:
     
@@ -23,10 +22,3 @@ class Dataloader:
 
             setattr(self, dataset, cls(self.dataset_path))
             return getattr(self, dataset).df
-
-
-#loader = Dataloader('/Users/fellut/OneDrive - Sinch AB/datasets/')
-#loader = Dataloader('/Users/fellut/Desktop/SER/datasets/')
-
-#print(loader.load_dataset('iemocap'))
-
