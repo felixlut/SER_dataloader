@@ -59,12 +59,13 @@ class Iemocap:
         return wav_to_transcript
 
     def get_df(self):
+        wav_path = self.path + '/wav/wav/'
         file_2_transcript = self._get_transcript_dict()
         wav_2_label = self._get_label_dict()
-        wav_2_duration = util._get_duration_dict(self.path + '/wav/', self.path + 'wav_2_duration.csv')
+        wav_2_duration = util._get_duration_dict(wav_path, self.path + 'wav_2_duration.csv')
         data = []
-        for f_name in tqdm(os.listdir(self.path + '/wav/'), desc='Dataframe'):
-            f_path = self.path + '/wav/' + f_name
+        for f_name in tqdm(os.listdir(wav_path), desc='Dataframe'):
+            f_path = wav_path + f_name
             f_path = os.path.abspath(f_path)
 
             emo = wav_2_label[f_name[:-4]]
