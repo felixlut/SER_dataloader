@@ -19,7 +19,7 @@ class Dataloader:
             #if dataset == 'iemocap':
                 #cls = Iemocap
             mod_name = '.' + dataset
-            cls = getattr(importlib.import_module(mod_name), dataset.capitalize())
+            cls = getattr(importlib.import_module(mod_name, package='my_current_pkg'), dataset.capitalize())
 
             setattr(self, dataset, cls(self.dataset_path))
             return getattr(self, dataset).df
