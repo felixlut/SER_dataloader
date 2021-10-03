@@ -5,6 +5,7 @@ import pandas as pd
 
 def _get_duration_dict(wav_path, csv_path=None):
     wav_2_duration = {}
+    print(csv_path)
     if csv_path is not None and os.path.isfile(csv_path):
         wav_2_duration = pd.read_csv(csv_path, header=None, index_col=0, squeeze=True).to_dict()
 
