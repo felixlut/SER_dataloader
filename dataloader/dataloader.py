@@ -12,10 +12,7 @@ class Dataloader:
         if dataset not in self.implemented_datasets:
             raise NotImplementedError("{} not in {}!".format(dataset, self.implemented_datasets))
 
-        should_cont = hasattr(self, dataset)
-        print('self has attribute ' + dataset + '  -  ' + str(should_cont))
         if hasattr(self, dataset):
-            print('Already loaded')
             return getattr(self, dataset)
         else:
             mod_name = '.' + dataset
@@ -23,7 +20,3 @@ class Dataloader:
 
             setattr(self, dataset, cls(self.dataset_path))
             return getattr(self, dataset).df
-
-
-    def has_attr(self, attr):
-        return hasattr(self, attr)
