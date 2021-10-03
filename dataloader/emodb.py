@@ -8,7 +8,7 @@ from . import util
 class Emodb:
 
     def __init__(self, top_path):
-        self.path = top_path + 'emodb'
+        self.path = top_path + 'emoDB-data'
         self.df = self.get_df()
 
 
