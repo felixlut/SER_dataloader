@@ -37,6 +37,7 @@ class Emodb:
                 'actor_id'  : act_id,
                 'lang'      : 'ger',
                 'wav_path'  : f_path,
+                'file_name' : f_name,
                 'emo'       : emo,
                 'length'    : wav_2_duration[f_name[:-4]]
             })
