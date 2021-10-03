@@ -59,6 +59,20 @@ class Iemocap:
         return wav_to_transcript
 
     def get_df(self):
+        annotation_mapping = {
+            'ang': 'Angry',
+            'hap': 'Happy',
+            'exc': 'Excited', 
+            'sad': 'Sad',
+            'neu': 'Neutral',
+            'fru': 'Frustrated',
+            'fea': 'Fear',
+            'sur': 'Surprised',
+            'dis': 'Disgusted',
+            'xxx': 'xxx',
+            'oth': 'Other',
+        }
+
         wav_path = self.path + '/wav/wav/'
         file_2_transcript = self._get_transcript_dict()
         wav_2_label = self._get_label_dict()
@@ -69,6 +83,7 @@ class Iemocap:
             f_path = os.path.abspath(f_path)
 
             emo = wav_2_label[f_name[:-4]]
+            emo = annotation_mapping[emo]
             actor_id = f_name[2:5]
 
             data.append({
