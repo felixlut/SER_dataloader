@@ -13,6 +13,7 @@ class Dataloader:
             raise NotImplementedError("{} not in {}!".format(dataset, self.implemented_datasets))
 
         if hasattr(self, dataset):
+            print('Already loaded')
             return getattr(self, dataset)
         else:
             #if dataset == 'iemocap':
