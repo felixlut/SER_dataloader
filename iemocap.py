@@ -26,7 +26,10 @@ class Iemocap:
                                     
                     for f, emo in pairs:
                         wav_to_label[f] = emo
-        
+
+        df = pd.DataFrame.from_dict(wav_to_label, orient='index')
+        df = df.sort_index()
+        df.to_csv('wav_2_label.csv')        
         return wav_to_label
 
     
@@ -49,27 +52,21 @@ class Iemocap:
                         wav_to_transcript[line[0]] = line[2]
 
         df = pd.DataFrame.from_dict(wav_to_transcript, orient='index')
+        df = df.sort_index()
         df.to_csv('wav_2_transcript.csv')
-
         return wav_to_transcript
 
     def get_df(self):
         file_2_transcript = self._get_transcript_dict()
         wav_2_label = self._get_label_dict()
-        wav_2_duration = util._get_duration_dict(self.path)
+        wav_2_duration = util._get_duration_dict(self.path + '/wav/', self.path + 'wav_2_duration.csv')
         data = []
-        for f_name in tqdm(os.listdir(self.path + '/wav/')):
+        for f_name in tqdm(os.listdir(self.path + '/wav/'), desc='Dataframe'):
             f_path = self.path + '/wav/' + f_name
             f_path = os.path.abspath(f_path)
 
             emo = wav_2_label[f_name[:-4]]
             actor_id = f_name[2:5]
-
-            if f_name in wav_2_duration.keys():
-                duration = wav_2_duration[f_name] 
-            else:
-                y, sr = librosa.load(self.path + '/wav/' + f_name)
-                duration = librosa.get_duration(y=y, sr=sr)
 
             data.append({
                 'impro/script'  : 'impro' if 'impro' in f_name else 'script',
@@ -81,7 +78,7 @@ class Iemocap:
                 'file_name'     : f_name,
                 'emo'           : emo,
                 'text'          : file_2_transcript[f_name[:-4]],
-                'length'        : duration,
+                'length'        : wav_2_duration[f_name[:-4]],
             })
 
         return pd.DataFrame(data)
