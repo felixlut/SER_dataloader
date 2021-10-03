@@ -7,7 +7,7 @@ import util
 class Iemocap:
 
     def __init__(self, top_path):
-        self.path = top_path + 'iemocap'
+        self.path = top_path + 'iemocap/'
         self.df = self.get_df()
 
 

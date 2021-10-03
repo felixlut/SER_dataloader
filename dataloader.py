@@ -1,5 +1,7 @@
 import importlib
 
+from iemocap import Iemocap
+
 class Dataloader:
     
     def __init__(self, dataset_path):
@@ -14,7 +16,10 @@ class Dataloader:
         if hasattr(self, dataset):
             return getattr(self, dataset)
         else:
-            mod_name = dataset
-            cls = getattr(importlib.import_module(mod_name), dataset.capitalize())
+            if dataset == 'iemocap':
+                cls = Iemocap
+            #mod_name = dataset
+            #cls = getattr(importlib.import_module(mod_name), dataset.capitalize())
+
             setattr(self, dataset, cls(self.dataset_path))
             return getattr(self, dataset).df
