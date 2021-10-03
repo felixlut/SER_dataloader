@@ -88,7 +88,7 @@ class Iemocap:
 
             data.append({
                 'impro/script'  : 'impro' if 'impro' in f_name else 'script',
-                'session'       : actor_id[:-1],
+                'session'       : actor_id[1],
                 'actor_id'      : actor_id,
                 'gender'        : actor_id[-1:],
                 'lang'          : 'eng',
