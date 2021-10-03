@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='dataloader',
-      version='1.1',
+      version='1',
       description='The funniest joke in the world',
       url='http://github.com/felixlut/SER_dataloader',
       author='Felix Luthman',
