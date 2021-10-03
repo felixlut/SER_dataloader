@@ -13,7 +13,7 @@ class Dataloader:
             raise NotImplementedError("{} not in {}!".format(dataset, self.implemented_datasets))
 
         should_cont = hasattr(self, dataset)
-        print('self has attribute ' + dataset + '  -  ' + should_cont)
+        print('self has attribute ' + dataset + '  -  ' + str(should_cont))
         if hasattr(self, dataset):
             print('Already loaded')
             return getattr(self, dataset)
