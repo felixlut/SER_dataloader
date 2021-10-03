@@ -84,7 +84,7 @@ class Iemocap:
 
             emo = wav_2_label[f_name[:-4]]
             emo = annotation_mapping[emo]
-            actor_id = f_name[2:5]
+            actor_id = f_name[3:6]
 
             data.append({
                 'impro/script'  : 'impro' if 'impro' in f_name else 'script',
