@@ -9,11 +9,7 @@ class Emodb:
 
     def __init__(self, top_path):
         self.path = top_path + 'emodb-data'
-        self.df = self.get_df()
-
-
-    def get_df(self):
-        annotation_mapping = {
+        self.annotation_mapping = {
             'N': 'Neutral',
             'F': 'Happy',
             'T': 'Sad',
@@ -22,14 +18,17 @@ class Emodb:
             'E': 'Disgusted',
             'A': 'Fear'
         }
+        self.df = self.get_df()
 
+
+    def get_df(self):
         wav_path = self.path + '/wav/wav/'
         wav_2_duration = util._get_duration_dict(wav_path, self.path + 'wav_2_duration.csv')
         data = []
         for f_name in tqdm(os.listdir(wav_path)):
             act_id = f_name[:2]
             emo = f_name[5]
-            emo = annotation_mapping[emo]
+            emo = self.annotation_mapping[emo]
             f_path = wav_path + f_name
             f_path = os.path.abspath(f_path)
 
