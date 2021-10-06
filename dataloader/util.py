@@ -14,7 +14,7 @@ def _get_duration_dict(wav_path, csv_path=None):
             duration = librosa.get_duration(filename=wav_path + f_name)
             wav_2_duration[f_name[:-4]] = duration
 
-    df = pd.DataFrame.from_dict(wav_2_duration, orient='index', columns=['file_name', 'length'])
+    df = pd.DataFrame.from_dict(wav_2_duration, orient='index')
     df = df.sort_index()
     df.to_csv('wav_2_duration.csv')
     return wav_2_duration
