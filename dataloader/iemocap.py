@@ -42,7 +42,7 @@ class Iemocap:
                     for f, emo in pairs:
                         wav_to_label[f] = emo
 
-        df = pd.DataFrame.from_dict(wav_to_label, orient='index')
+        df = pd.DataFrame.from_dict(wav_to_label, orient='index', columns=['file_name', 'emo'])
         df = df.sort_index()
         df.to_csv('wav_2_label.csv')        
         return wav_to_label
@@ -66,7 +66,7 @@ class Iemocap:
                     if line[0] in file_names:
                         wav_to_transcript[line[0]] = line[2]
 
-        df = pd.DataFrame.from_dict(wav_to_transcript, orient='index')
+        df = pd.DataFrame.from_dict(wav_to_transcript, orient='index', columns=['file_name', 'text'])
         df = df.sort_index()
         df.to_csv('wav_2_transcript.csv')
         return wav_to_transcript
