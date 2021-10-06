@@ -8,7 +8,7 @@ from . import util
 class Meld:
 
     def __init__(self, top_path):
-        self.path = top_path + 'meld-data/'
+        self.path = top_path + 'melddata/'
         self.annotation_mapping = {
             'anger'     : 'Angry',
             'joy'       : 'Happy',
