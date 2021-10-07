@@ -29,7 +29,7 @@ class Esd:
                 'lang'      : 'chi' if act_id <= 10 else 'eng',
                 'set'       : wav_2_set[f_name[:-4]],
                 'wav_path'  : f_path,
-                'file_name' : f_name[:-4],
+                'file_name' : f_name,
                 'emo'       : emo,
                 'length'    : wav_2_duration[f_name[:-4]]
             })
