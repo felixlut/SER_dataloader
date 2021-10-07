@@ -22,7 +22,7 @@ class Esd:
             f_path = wav_path + f_name
             f_path = os.path.abspath(f_path)
             emo = wav_2_label[f_name[:-4]]
-            act_id = int(act_id)
+            act_id = int(f_name[:4])
 
             data.append({
                 'actor_id'  : act_id,
