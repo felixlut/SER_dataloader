@@ -8,7 +8,7 @@ import os
 class BaseDataset(ABC):
     def __init__(self, path, annotation_mapping):
         assert path[-1], "Make sure that the path to the dataset ends with a '/'"
-        
+
         self.path = path
         self.wav_path = self.path + '/wav/wav/'
         self.wav_tele_path = self.path + '/wav_telephone/wav_telephone/'
@@ -23,7 +23,6 @@ class BaseDataset(ABC):
         csv_path = self.path + 'wav_2_duration.csv'
         wav_2_duration = {}
         if os.path.isfile(csv_path):
-            print('wav_2_duration found')
             wav_2_duration = pd.read_csv(csv_path, header=None, index_col=0, squeeze=True).to_dict()
 
         files = os.listdir(self.wav_path)
