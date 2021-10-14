@@ -49,7 +49,7 @@ class BaseDataset(ABC):
             dataset_specific_dict['wav_path']   = f_path
             dataset_specific_dict['file_name']  = f_name
             dataset_specific_dict['length']     = wav_2_duration[f_name]
-            #if os.path.isfile(f_tele_path): dataset_specific_dict['wav_tele_path'] = f_tele_path
+            if os.path.isfile(f_tele_path): dataset_specific_dict['wav_tele_path'] = f_tele_path
 
             data.append(dataset_specific_dict)
 
