@@ -3,7 +3,7 @@ from dataloader.base_dataset import BaseDataset
 
 class Emodb(BaseDataset):
     def __init__(self, top_path):
-        annotation_mapping = {
+        self.annotation_mapping = {
             'N': 'Neutral',
             'F': 'Happy',
             'T': 'Sad',
@@ -12,7 +12,7 @@ class Emodb(BaseDataset):
             'E': 'Disgusted',
             'A': 'Fear'
         }
-        super().__init__(top_path + 'emodb-data/', annotation_mapping)
+        super().__init__(top_path + 'emodb-data/')
 
     def get_dataset_specific_dict(self, f_name):
         return {

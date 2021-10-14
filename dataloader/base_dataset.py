@@ -6,13 +6,12 @@ import os
 
 
 class BaseDataset(ABC):
-    def __init__(self, path, annotation_mapping):
+    def __init__(self, path):
         assert path[-1], "Make sure that the path to the dataset ends with a '/'"
 
         self.path = path
         self.wav_path = self.path + '/wav/wav/'
         self.wav_tele_path = self.path + '/wav_telephone/wav_telephone/'
-        self.annotation_mapping = annotation_mapping
         self.df = self.get_df()
 
     @abstractmethod

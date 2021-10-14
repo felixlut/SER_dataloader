@@ -3,7 +3,7 @@ from dataloader.base_dataset import BaseDataset
 
 class Cremad(BaseDataset):
     def __init__(self, top_path):
-        annotation_mapping = {
+        self.annotation_mapping = {
             'ANG': 'Angry',
             'HAP': 'Happy',
             'SAD': 'Sad',
@@ -25,7 +25,7 @@ class Cremad(BaseDataset):
             'TSI': "The surface is slick",
             'WSI': "We'll stop in a couple of minutes",
         }
-        super().__init__(top_path + 'cremad/', annotation_mapping)
+        super().__init__(top_path + 'cremad/')
 
     def get_dataset_specific_dict(self, f_name):
         act_id, sentence, emo, intensity = f_name.split('_')

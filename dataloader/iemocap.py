@@ -22,7 +22,7 @@ class Iemocap(BaseDataset):
         }
         self.file_2_transcript = self._get_transcript_dict()
         self.wav_2_label = self._get_label_dict()
-        super().__init__(self.path, self.annotation_mapping)
+        super().__init__(self.path)
 
     def _get_label_dict(self):
         if os.path.isfile(self.path + 'wav_2_label.csv'):
