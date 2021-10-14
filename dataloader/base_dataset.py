@@ -29,7 +29,7 @@ class BaseDataset(ABC):
 
         files = os.listdir(self.wav_path)
         for f_name in tqdm(files, desc='Load Durations'):
-            if f_name[:-4] not in wav_2_duration.keys():
+            if f_name[:-4] not in wav_2_duration:
                 duration = librosa.get_duration(filename=self.wav_path + f_name)
                 wav_2_duration[f_name[:-4]] = duration
         
@@ -37,7 +37,8 @@ class BaseDataset(ABC):
 
     def duration_to_csv(self, csv_path):
         duration_dict = self._load_duration_dict()
-        pd.DataFrame(duration_dict).to_csv(csv_path, index=False)
+        pd.DataFrame(duration_dict, columns=['file_name', 'length']).to_csv(csv_path)
+        
 
     def get_df(self):
         tele_exists = os.path.isdir(self.wav_tele_path)
