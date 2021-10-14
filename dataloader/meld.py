@@ -21,6 +21,8 @@ class Meld(BaseDataset):
         self.wav_2_sentiment = pd.read_csv(self.path + 'wav_2_sentiment.csv', header=None, index_col=0, squeeze=True).to_dict()
         super().__init__(self.path)
 
+    def _valid_file(self, f_name):
+        return f_name in self.wav_2_label
 
     def get_dataset_specific_dict(self, f_name):
         return {
