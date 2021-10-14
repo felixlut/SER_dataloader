@@ -13,7 +13,6 @@ class Emodb(BaseDataset):
             'A': 'Fear'
         }
         super().__init__(top_path + 'emodb-data', annotation_mapping)
-        self.wav_2_duration = self._load_duration_dict()
 
     def get_dataset_specific_dict(self, f_name):
         return {
