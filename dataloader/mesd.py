@@ -14,7 +14,7 @@ class Mesd(BaseDataset):
         super().__init__(top_path + 'mesddata/')
 
     def get_dataset_specific_dict(self, f_name):
-        emo, gender, corpus, text = f_name.split('_')
+        emo, gender, corpus, text = f_name.split('_', 4)
         return {
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'spanish (Mexico)',
