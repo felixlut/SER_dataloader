@@ -40,6 +40,9 @@ class BaseDataset(ABC):
         wav_2_duration = self._load_duration_dict()
         data = []
         for f_name in tqdm(os.listdir(self.wav_path), desc='Load Dataframe'):
+            # Cut-off the file-extension
+            f_name = f_name[:-4]
+
             if self._valid_file(f_name):
                 # Cut-off the file-extension
                 f_name = f_name[:-4]
