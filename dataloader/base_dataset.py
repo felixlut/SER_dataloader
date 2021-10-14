@@ -18,7 +18,6 @@ class BaseDataset(ABC):
     def get_dataset_specific_dict(self, f_name):
         pass
 
-    @abstractmethod
     def _valid_file(self, f_name):
         return True
     
