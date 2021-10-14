@@ -53,7 +53,7 @@ class BaseDataset(ABC):
             if os.path.isfile(f_tele_path): dataset_specific_dict['wav_tele_path'] = f_tele_path
 
             # Make sure that a set of fields are present in the data
-            assert set(['lang', 'wav_path', 'emo', 'length']).issubset(dataset_specific_dict.keys())
+            #assert set(['lang', 'wav_path', 'emo', 'length']).issubset(dataset_specific_dict.keys())
 
             data.append(dataset_specific_dict)
         
