@@ -6,7 +6,8 @@ from .base_dataset import BaseDataset
 
 class Iemocap(BaseDataset):
     def __init__(self, top_path):
-        annotation_mapping = {
+        self.path = top_path + 'iemocap/'
+        self.annotation_mapping = {
             'ang': 'Angry',
             'hap': 'Happy',
             'exc': 'Excited', 
@@ -21,7 +22,7 @@ class Iemocap(BaseDataset):
         }
         self.file_2_transcript = self._get_transcript_dict()
         self.wav_2_label = self._get_label_dict()
-        super().__init__(top_path + 'iemocap/', annotation_mapping)
+        super().__init__(self, self.annotation_mapping)
 
     def _get_label_dict(self):
         if os.path.isfile(self.path + 'wav_2_label.csv'):
