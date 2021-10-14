@@ -15,7 +15,7 @@ class Oreau(BaseDataset):
             'S': 'Surprised',
             'N': 'Neutral'
         }
-        self.actor_dict = pd.read_csv(self.path + 'actor.csv', index_col=0, squeeze=True).to_dict()
+        self.actor_dict = pd.read_csv(self.path + 'actors.csv', index_col=0, squeeze=True).to_dict()
         super().__init__(self.path)
 
     def get_dataset_specific_dict(self, f_name):
