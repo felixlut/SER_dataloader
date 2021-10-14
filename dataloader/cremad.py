@@ -25,7 +25,7 @@ class Cremad(BaseDataset):
             'TSI': "The surface is slick",
             'WSI': "We'll stop in a couple of minutes",
         }
-        super().__init__(top_path + 'cremad', annotation_mapping)
+        super().__init__(top_path + 'cremad/', annotation_mapping)
 
     def get_dataset_specific_dict(self, f_name):
         act_id, sentence, emo, intensity = f_name.split('_')

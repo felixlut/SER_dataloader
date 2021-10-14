@@ -12,7 +12,7 @@ class Emodb(BaseDataset):
             'E': 'Disgusted',
             'A': 'Fear'
         }
-        super().__init__(top_path + 'emodb-data', annotation_mapping)
+        super().__init__(top_path + 'emodb-data/', annotation_mapping)
 
     def get_dataset_specific_dict(self, f_name):
         return {
