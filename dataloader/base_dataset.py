@@ -35,6 +35,10 @@ class BaseDataset(ABC):
         
         return wav_2_duration
 
+    def duration_to_csv(self, csv_path):
+        duration_dict = self._load_duration_dict()
+        pd.DataFrame(duration_dict).to_csv(csv_path, index=False)
+
     def get_df(self):
         tele_exists = os.path.isdir(self.wav_tele_path)
         wav_2_duration = self._load_duration_dict()
