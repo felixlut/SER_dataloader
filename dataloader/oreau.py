@@ -19,16 +19,13 @@ class Oreau(BaseDataset):
         super().__init__(self.path)
 
     def get_dataset_specific_dict(self, f_name):
-        act_id = f_name[:2]
+        act_id = int(f_name[:2])
         utterance = f_name[2:5]
         emo = f_name[5]
-        return_dict = {
+        return {
             'actor_id'  : act_id,
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'fr',
+            'gender'    : self.actor_dict['gender'][act_id] if act_id in self.actor_dict['gender'] else None,
+            'age'       : self.actor_dict['age'][act_id] if act_id in self.actor_dict['age'] else None,
         }
-        if act_id in self.actor_dict['gender']:
-            return_dict['gender'] = self.actor_dict['gender'][int(act_id)]
-            return_dict['age'] = self.actor_dict['age'][int(act_id)]
-
-        return return_dict
