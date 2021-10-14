@@ -34,6 +34,7 @@ class BaseDataset(ABC):
         return wav_2_duration
 
     def get_df(self):
+        tele_exists = os.path.isdir(self.wav_tele_path)
         wav_2_duration = self._load_duration_dict()
         data = []
         for f_name in tqdm(os.listdir(self.wav_path), desc='Load Dataframe'):
@@ -42,14 +43,11 @@ class BaseDataset(ABC):
             # Set the dataset specific fields
             dataset_specific_dict = self.get_dataset_specific_dict(f_name)
 
-            # Set the dataset independent fields
-            f_path = self.wav_path + f_name + '.wav'
-            f_tele_path = self.wav_tele_path + f_name + '.wav'
-            
-            dataset_specific_dict['wav_path']   = f_path
+            # Set the dataset independent fields            
+            dataset_specific_dict['wav_path']   = self.wav_path + f_name + '.wav'
             dataset_specific_dict['file_name']  = f_name
             dataset_specific_dict['length']     = wav_2_duration[f_name]
-            if os.path.isfile(f_tele_path): dataset_specific_dict['wav_tele_path'] = f_tele_path
+            if tele_exists: dataset_specific_dict['wav_tele_path'] = self.wav_tele_path + f_name + '.wav'
 
             data.append(dataset_specific_dict)
 
