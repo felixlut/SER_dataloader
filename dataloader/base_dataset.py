@@ -17,6 +17,10 @@ class BaseDataset(ABC):
     @abstractmethod
     def get_dataset_specific_dict(self, f_name):
         pass
+
+    @abstractmethod
+    def _valid_file(self, f_name):
+        return True
     
     def _load_duration_dict(self):
         csv_path = self.path + 'wav_2_duration.csv'
@@ -37,22 +41,22 @@ class BaseDataset(ABC):
         wav_2_duration = self._load_duration_dict()
         data = []
         for f_name in tqdm(os.listdir(self.wav_path), desc='Load Dataframe'):
-            # Cut-off the file-extension
-            f_name = f_name[:-4]
+            if self._valid_file(f_name):
+                # Cut-off the file-extension
+                f_name = f_name[:-4]
 
-            # Set the dataset specific fields
-            dataset_specific_dict = self.get_dataset_specific_dict(f_name)
+                # Set the dataset specific fields
+                dataset_specific_dict = self.get_dataset_specific_dict(f_name)
 
-            # Set the dataset independent fields            
-            dataset_specific_dict['wav_path']   = os.path.abspath(self.wav_path + f_name + '.wav')
-            dataset_specific_dict['file_name']  = f_name
-            dataset_specific_dict['length']     = wav_2_duration[f_name]
-            if tele_exists: dataset_specific_dict['wav_tele_path'] = os.path.abspath(self.wav_tele_path + f_name + '.wav')
+                # Set the dataset independent fields            
+                dataset_specific_dict['wav_path']   = os.path.abspath(self.wav_path + f_name + '.wav')
+                dataset_specific_dict['file_name']  = f_name
+                dataset_specific_dict['length']     = wav_2_duration[f_name]
+                if tele_exists: dataset_specific_dict['wav_tele_path'] = os.path.abspath(self.wav_tele_path + f_name + '.wav')
 
-            data.append(dataset_specific_dict)
+                data.append(dataset_specific_dict)
 
         df = pd.DataFrame(data)
         # Make sure that a set of fields are present in the data
         assert set(['lang', 'wav_path', 'emo', 'length']).issubset(set(df.columns))
         return df
-
