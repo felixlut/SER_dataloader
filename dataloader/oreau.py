@@ -22,10 +22,15 @@ class Oreau(BaseDataset):
         act_id = f_name[:2]
         utterance = f_name[2:5]
         emo = f_name[5]
-        return {
+        return_dict = {
             'actor_id'  : act_id,
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'fr',
             'gender'    : self.actor_dict['gender'][int(act_id)],
             'age'       : self.actor_dict['age'][int(act_id)],
         }
+        if act_id in self.actor_dict['gender']:
+            return_dict['gender'] = self.actor_dict['gender'][int(act_id)]
+            return_dict['age'] = self.actor_dict['age'][int(act_id)]
+
+        return return_dict
