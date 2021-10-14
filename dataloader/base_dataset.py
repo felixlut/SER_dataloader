@@ -37,7 +37,9 @@ class BaseDataset(ABC):
 
     def duration_to_csv(self, csv_path):
         duration_dict = self._load_duration_dict()
-        pd.DataFrame(duration_dict, columns=['file_name', 'length']).to_csv(csv_path)
+        df = pd.DataFrame(duration_dict, columns=['file_name', 'length'])
+        asd=asd
+        df.to_csv(csv_path)
         
 
     def get_df(self):
