@@ -28,6 +28,6 @@ class Meld(BaseDataset):
             'lang'          : 'eng',
             'emo'           : self.wav_2_label[f_name],
             'sentiment'     : self.wav_2_sentiment[f_name],
-            'text'          : self.file_2_transcript[f_name],
+            'text'          : self.wav_2_transcript[f_name],
             'set'           : next((x for x in ['train', 'test', 'dev'] if x in f_name), None),
         }
