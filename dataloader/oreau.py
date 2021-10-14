@@ -5,6 +5,7 @@ from dataloader.base_dataset import BaseDataset
 
 class Oreau(BaseDataset):
     def __init__(self, top_path):
+        self.path = top_path + 'oreaudata/'
         self.annotation_mapping = {
             'C': 'Angry',
             'T': 'Sad',
@@ -15,8 +16,7 @@ class Oreau(BaseDataset):
             'N': 'Neutral'
         }
         self.actor_dict = pd.read_csv(self.path + 'actor.csv', index_col=0, squeeze=True).to_dict()
-
-        super().__init__(top_path + 'oreaudata/')
+        super().__init__(self.path)
 
     def get_dataset_specific_dict(self, f_name):
         act_id = f_name[:2]
