@@ -43,10 +43,10 @@ class BaseDataset(ABC):
             dataset_specific_dict = self.get_dataset_specific_dict(f_name)
 
             # Set the dataset independent fields            
-            dataset_specific_dict['wav_path']   = self.wav_path + f_name + '.wav'
+            dataset_specific_dict['wav_path']   = os.path.abspath(self.wav_path + f_name + '.wav')
             dataset_specific_dict['file_name']  = f_name
             dataset_specific_dict['length']     = wav_2_duration[f_name]
-            if tele_exists: dataset_specific_dict['wav_tele_path'] = self.wav_tele_path + f_name + '.wav'
+            if tele_exists: dataset_specific_dict['wav_tele_path'] = os.path.abspath(self.wav_tele_path + f_name + '.wav')
 
             data.append(dataset_specific_dict)
 
