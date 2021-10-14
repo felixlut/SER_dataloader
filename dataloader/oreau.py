@@ -27,5 +27,5 @@ class Oreau(BaseDataset):
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'fr',
             'gender'    : self.actor_dict['gender'][act_id] if act_id in self.actor_dict['gender'] else None,
-            'age'       : self.actor_dict['age'][act_id] if act_id in self.actor_dict['age'] else None,
+            'age'       : int(self.actor_dict['age'][act_id]) if act_id in self.actor_dict['age'] else None,
         }
