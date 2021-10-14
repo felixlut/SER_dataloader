@@ -7,11 +7,11 @@ class Dataloader:
         self.implemented_datasets = ['iemocap', 'emodb', 'ravdess', 'esd', 'cremad', 'meld']
 
 
-    def load_dataset(self, dataset):
+    def load_dataset(self, dataset, force_reload=False):
         if dataset not in self.implemented_datasets:
             raise NotImplementedError("{} not in {}!".format(dataset, self.implemented_datasets))
 
-        if not hasattr(self, dataset):
+        if force_reload or not hasattr(self, dataset):
             mod_name = '.' + dataset
             cls = getattr(importlib.import_module(mod_name, package='dataloader'), dataset.capitalize())
             setattr(self, dataset, cls(self.dataset_path))
