@@ -37,10 +37,9 @@ class BaseDataset(ABC):
 
     def duration_to_csv(self, csv_path):
         duration_dict = self._load_duration_dict()
-        df = pd.DataFrame(duration_dict, columns=['file_name', 'length'])
-        asd=asd
+        df = pd.DataFrame.from_dict(duration_dict, orient='index', columns=['length'])
+        df = df.sort_index()
         df.to_csv(csv_path)
-        
 
     def get_df(self):
         tele_exists = os.path.isdir(self.wav_tele_path)
