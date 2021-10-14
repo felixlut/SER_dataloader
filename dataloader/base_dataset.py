@@ -48,9 +48,6 @@ class BaseDataset(ABC):
             f_name = f_name[:-4]
 
             if self._valid_file(f_name):
-                # Cut-off the file-extension
-                f_name = f_name[:-4]
-
                 # Set the dataset specific fields
                 dataset_specific_dict = self.get_dataset_specific_dict(f_name)
 
