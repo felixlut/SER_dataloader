@@ -15,10 +15,10 @@ class Meld(BaseDataset):
             'surprise'  : 'Surprised',
             'disgust'   : 'Disgusted',
         }
-        self.wav_2_transcript = pd.read_csv(self.path + 'wav_2_transcript.csv', header=None, index_col=0, squeeze=True).to_dict()
-        self.wav_2_label = pd.read_csv(self.path + 'wav_2_label.csv', header=None, index_col=0, squeeze=True).to_dict()
-        self.wav_2_actor = pd.read_csv(self.path + 'wav_2_actor.csv', header=None, index_col=0, squeeze=True).to_dict()
-        self.wav_2_sentiment = pd.read_csv(self.path + 'wav_2_sentiment.csv', header=None, index_col=0, squeeze=True).to_dict()
+        self.wav_2_transcript = pd.read_csv(self.path + 'wav_2_transcript.csv', index_col=0, squeeze=True).to_dict()
+        self.wav_2_label = pd.read_csv(self.path + 'wav_2_label.csv', index_col=0, squeeze=True).to_dict()
+        self.wav_2_actor = pd.read_csv(self.path + 'wav_2_actor.csv', index_col=0, squeeze=True).to_dict()
+        self.wav_2_sentiment = pd.read_csv(self.path + 'wav_2_sentiment.csv', index_col=0, squeeze=True).to_dict()
         super().__init__(self.path)
 
     def _valid_file(self, f_name):

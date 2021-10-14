@@ -26,7 +26,7 @@ class Iemocap(BaseDataset):
 
     def _get_label_dict(self):
         if os.path.isfile(self.path + 'wav_2_label.csv'):
-            return pd.read_csv(self.path + 'wav_2_label.csv', header=None, index_col=0, squeeze=True).to_dict()
+            return pd.read_csv(self.path + 'wav_2_label.csv', index_col=0, squeeze=True).to_dict()
         else:
             raise NotImplementedError("wav_2_label.csv not found, and labels cant be extracted from current dataset version")
 
@@ -53,7 +53,7 @@ class Iemocap(BaseDataset):
     def _get_transcript_dict(self):
         csv_path = self.path + 'wav_2_transcript.csv'
         if os.path.isfile(csv_path):
-            return pd.read_csv(csv_path, header=None, index_col=0, squeeze=True).to_dict()
+            return pd.read_csv(csv_path, index_col=0, squeeze=True).to_dict()
         else:
             raise NotImplementedError("wav_2_transcript.csv not found, and transcripts cant be extracted from current dataset version")
 
