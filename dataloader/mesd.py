@@ -17,7 +17,7 @@ class Mesd(BaseDataset):
         emo, gender, corpus, text = f_name.split('_', 3)
         return {
             'emo'       : self.annotation_mapping[emo],
-            'lang'      : 'spanish (Mexico)',
+            'lang'      : 'es',
             'gender'    : gender,
             'corpus'    : corpus,
             'text'      : text
