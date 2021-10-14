@@ -19,6 +19,8 @@ class Iemocap(BaseDataset):
             'xxx': 'xxx',
             'oth': 'Other',
         }
+        self.file_2_transcript = self._get_transcript_dict()
+        self.wav_2_label = self._get_label_dict()
         super().__init__(top_path + 'iemocap/', annotation_mapping)
 
     def _get_label_dict(self):
@@ -74,8 +76,6 @@ class Iemocap(BaseDataset):
         return wav_to_transcript
 
     def get_dataset_specific_dict(self, f_name):
-        file_2_transcript = self._get_transcript_dict()
-        wav_2_label = self._get_label_dict()
         actor_id = f_name[3:6]
         return {
             'impro/script'  : 'impro' if 'impro' in f_name else 'script',
@@ -83,6 +83,6 @@ class Iemocap(BaseDataset):
             'actor_id'      : actor_id,
             'gender'        : actor_id[-1:],
             'lang'          : 'eng',
-            'emo'           : self.annotation_mapping[wav_2_label[f_name]],
-            'text'          : file_2_transcript[f_name],
+            'emo'           : self.annotation_mapping[self.wav_2_label[f_name]],
+            'text'          : self.file_2_transcript[f_name],
         }
