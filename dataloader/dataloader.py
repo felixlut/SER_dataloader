@@ -4,7 +4,7 @@ import importlib
 class Dataloader:
     def __init__(self, dataset_path):
         self.dataset_path = dataset_path
-        self.implemented_datasets = ['iemocap', 'emodb', 'ravdess', 'esd', 'cremad', 'meld', 'mesd', 'oreau']
+        self.implemented_datasets = ['iemocap', 'emodb', 'ravdess', 'esd', 'cremad', 'meld', 'mesd', 'oreau', 'emovo']
 
 
     def load_dataset(self, dataset, force_reload=False):
