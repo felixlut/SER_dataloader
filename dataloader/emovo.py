@@ -8,7 +8,7 @@ class Emovo(BaseDataset):
             'gio': 'Happy',
             'pau': 'Fear',
             'rab': 'Angry',
-            'sor': 'Surprise',
+            'sor': 'Surprised',
             'tri': 'Sad',
             'neu': 'Neutral'
         }
