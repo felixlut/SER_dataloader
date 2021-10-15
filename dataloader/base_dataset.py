@@ -19,7 +19,7 @@ class BaseDataset(ABC):
             'Disgusted' : 'Negative',
             'Frustrated': 'Negative',
 
-            'Netural'   : 'Netural',
+            'Neutral'   : 'Neutral',
 
             'Bored'     : None,
             'Surprised' : None,
