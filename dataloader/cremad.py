@@ -34,5 +34,5 @@ class Cremad(BaseDataset):
             'lang'      : 'eng',
             'emo'       : self.annotation_mapping[emo],
             'text'      : self.text_mapping[sentence],
-            'intensity' : intensity[:-4]
+            'intensity' : intensity
         }
