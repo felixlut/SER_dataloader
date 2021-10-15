@@ -12,7 +12,7 @@ class Esd(BaseDataset):
         super().__init__(self.path)
 
     def get_dataset_specific_dict(self, f_name):
-        act_id = int(f_name)
+        act_id = int(f_name[:4])
         return {
             'actor_id'  : act_id,
             'lang'      : 'chi' if act_id <= 10 else 'eng',
