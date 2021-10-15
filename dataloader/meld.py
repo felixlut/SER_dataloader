@@ -15,6 +15,7 @@ class Meld(BaseDataset):
             'surprise'  : 'Surprised',
             'disgust'   : 'Disgusted',
         }
+        self.main_characters = {'Rachel', 'Monica', 'Ross', 'Joey', 'Chandler', 'Phoebe'}
         self.wav_2_transcript = pd.read_csv(self.path + 'wav_2_transcript.csv', index_col=0, squeeze=True).to_dict()
         self.wav_2_label = pd.read_csv(self.path + 'wav_2_label.csv', index_col=0, squeeze=True).to_dict()
         self.wav_2_actor = pd.read_csv(self.path + 'wav_2_actor.csv', index_col=0, squeeze=True).to_dict()
@@ -25,8 +26,9 @@ class Meld(BaseDataset):
         return f_name in self.wav_2_label
 
     def get_dataset_specific_dict(self, f_name):
+        act_id = self.wav_2_actor[f_name]
         return {
-            'actor_id'      : self.wav_2_actor[f_name],
+            'actor_id'      : act_id if act_id in self.main_characters else 'Other',
             'lang'          : 'eng',
             'emo'           : self.wav_2_label[f_name],
             'sentiment'     : self.wav_2_sentiment[f_name],
