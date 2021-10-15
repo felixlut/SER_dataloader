@@ -9,6 +9,24 @@ class BaseDataset(ABC):
     def __init__(self, path):
         assert path[-1], "Make sure that the path to the dataset ends with a '/'"
 
+        self.emo_2_sentiment = {
+            'Happy'     : 'Positive',
+            'Excited'   : 'Positive',
+
+            'Sad'       : 'Negative',
+            'Angry'     : 'Negative',
+            'Fear'      : 'Negative',
+            'Disgusted' : 'Negative',
+            'Frustrated': 'Negative',
+
+            'Netural'   : 'Netural',
+
+            'Bored'     : None,
+            'Surprised' : None,
+            'xxx'       : None,
+            'Other'     : None,
+            'Calm'      : None,
+        }
         self.path = path
         self.wav_path = self.path + '/wav/wav/'
         self.wav_tele_path = self.path + '/wav_telephone/wav_telephone/'
@@ -58,6 +76,8 @@ class BaseDataset(ABC):
                 dataset_specific_dict['file_name'] = f_name
                 dataset_specific_dict['length'] = wav_2_duration[f_name]
                 if tele_exists: dataset_specific_dict['wav_tele_path'] = os.path.abspath(self.wav_tele_path + f_name + '.wav')
+                if 'sentiment' not in dataset_specific_dict: 
+                    dataset_specific_dict['sentiment'] = self.emo_2_sentiment[dataset_specific_dict['emo']]
 
                 data.append(dataset_specific_dict)
 
