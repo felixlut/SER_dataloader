@@ -31,7 +31,7 @@ class Meld(BaseDataset):
             'actor_id'      : act_id if act_id in self.main_characters else 'Other',
             'lang'          : 'eng',
             'emo'           : self.annotation_mapping[self.wav_2_label[f_name]],
-            'sentiment'     : self.wav_2_sentiment[f_name],
+            'sentiment'     : self.wav_2_sentiment[f_name].capitalize(),
             'text'          : self.wav_2_transcript[f_name],
             'set'           : next((x for x in ['train', 'test', 'dev'] if x in f_name), None),
         }
