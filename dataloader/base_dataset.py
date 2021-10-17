@@ -23,6 +23,7 @@ class BaseDataset(ABC):
 
             'Bored'     : None,
             'Surprised' : None,
+            'Surprise'  : None,
             'xxx'       : None,
             'Other'     : None,
             'Calm'      : None,
