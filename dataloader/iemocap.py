@@ -86,4 +86,5 @@ class Iemocap(BaseDataset):
             'lang'          : 'eng',
             'emo'           : self.annotation_mapping[self.wav_2_label[f_name]],
             'text'          : self.file_2_transcript[f_name],
+            'dataset'       : 'iemocap',
         }

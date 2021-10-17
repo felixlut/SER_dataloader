@@ -28,4 +28,5 @@ class Oreau(BaseDataset):
             'lang'      : 'fr',
             'gender'    : self.actor_dict['gender'][act_id] if act_id in self.actor_dict['gender'] else None,
             'age'       : int(self.actor_dict['age'][act_id]) if act_id in self.actor_dict['age'] else None,
+            'dataset'   : 'oreau',
         }

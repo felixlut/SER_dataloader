@@ -20,5 +20,7 @@ class Mesd(BaseDataset):
             'lang'      : 'es',
             'gender'    : gender,
             'corpus'    : corpus,
-            'text'      : text
+            'text'      : text,
+            'dataset'   : 'mesd',
+
         }

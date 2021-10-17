@@ -17,4 +17,5 @@ class Esd(BaseDataset):
             'lang'      : 'chi' if act_id <= 10 else 'eng',
             'set'       : self.wav_2_set[f_name],
             'emo'       : self.wav_2_label[f_name],
+            'dataset'   : 'esd',
         }

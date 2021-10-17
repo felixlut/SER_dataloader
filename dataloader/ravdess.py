@@ -27,4 +27,5 @@ class Ravdess(BaseDataset):
             'emo'       : self.annotation_mapping[emo],
             'text'      : self.text_mapping[sentence],
             'gender'    : 'F' if int(act_id) % 2 == 0 else 'M',
+            'dataset'   : 'ravdess',
         }

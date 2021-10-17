@@ -22,5 +22,6 @@ class Emovo(BaseDataset):
             'actor_id'  : act_id,
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'it',
+            'dataset'   : 'emovo',
             # 'text'      : self.text_mapping[sentence], TODO: Add transcript
         }

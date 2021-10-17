@@ -19,4 +19,5 @@ class Emodb(BaseDataset):
             'actor_id'  : f_name[:2],
             'emo'       : self.annotation_mapping[f_name[5]],
             'lang'      : 'ger',
+            'dataset'   : 'emodb',
         }
