@@ -12,10 +12,11 @@ class Esd(BaseDataset):
 
     def get_dataset_specific_dict(self, f_name):
         act_id = int(f_name[:4])
+        lang = 'chi' if act_id <= 10 else 'eng'
         return {
             'actor_id'  : act_id,
-            'lang'      : 'chi' if act_id <= 10 else 'eng',
+            'lang'      : lang,
             'set'       : self.wav_2_set[f_name],
             'emo'       : self.wav_2_label[f_name],
-            'dataset'   : 'esd',
+            'dataset'   : 'esd' + '-' + lang,
         }
