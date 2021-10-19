@@ -68,8 +68,8 @@ class BaseDataset(ABC):
             # Cut-off the file-extension
             f_name = f_name[:-4]
             
-            # Ignore files longer than 10s
-            if wav_2_duration[f_name] > 10:
+            # Ignore files longer than 10s and shorter than 0.15s
+            if wav_2_duration[f_name] > 10 or wav_2_duration[f_name] < 0.15:
                 continue
 
             if self._valid_file(f_name):
