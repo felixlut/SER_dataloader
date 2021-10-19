@@ -67,6 +67,10 @@ class BaseDataset(ABC):
         for f_name in tqdm(os.listdir(self.wav_path), desc='Load Dataframe'):
             # Cut-off the file-extension
             f_name = f_name[:-4]
+            
+            # Ignore files longer than 10s
+            if wav_2_duration[f_name] > 10:
+                continue
 
             if self._valid_file(f_name):
                 # Set the dataset specific fields
