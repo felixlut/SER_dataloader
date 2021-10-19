@@ -1,4 +1,5 @@
 import importlib
+import pandas as pd
 
 
 class Dataloader:
@@ -17,3 +18,10 @@ class Dataloader:
             setattr(self, dataset, cls(self.dataset_path))
         
         return getattr(self, dataset).df
+    
+    def load_all_datasets(self):
+        all_dfs = []
+        for subset in self.implemented_datasets:
+            all_dfs.append(self.load_dataset(subset))
+        
+        return pd.concat(all_dfs, axis=0, ignore_index=True)
