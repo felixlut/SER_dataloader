@@ -23,7 +23,7 @@ class Meld(BaseDataset):
         super().__init__(self.path)
 
     def _valid_file(self, f_name):
-        return f_name in self.wav_2_label
+        return f_name in self.wav_2_label and self.wav_2_duration[f_name] > 2
 
     def get_dataset_specific_dict(self, f_name):
         act_id = self.wav_2_actor[f_name]
