@@ -9,6 +9,7 @@ class BaseDataset(ABC):
     def __init__(self, path):
         assert path[-1], "Make sure that the path to the dataset ends with a '/'"
 
+        # Conversion of Emotional labels to a Sentiment based system instead  
         self.emo_2_sentiment = {
             'Happy'     : 'Positive',
             'Excited'   : 'Positive',
@@ -36,12 +37,21 @@ class BaseDataset(ABC):
 
     @abstractmethod
     def get_dataset_specific_dict(self, f_name):
+        """
+        Extract dataset specific columns (actor_id, language, transcription, emotion, etc)
+        """
         pass
 
     def _valid_file(self, f_name):
+        """
+        Dataset-specific filter for discarding unwanted files by custom metric
+        """
         return True
     
     def _load_duration_dict(self):
+        """
+        Extract the duration of each file
+        """
         csv_path = self.path + 'wav_2_duration.csv'
         wav_2_duration = {}
         if os.path.isfile(csv_path):
@@ -56,12 +66,18 @@ class BaseDataset(ABC):
         return wav_2_duration
 
     def duration_to_csv(self, csv_path):
+        """
+        Write the duration dictionary to 'csv_path'
+        """
         duration_dict = self._load_duration_dict()
         df = pd.DataFrame.from_dict(duration_dict, orient='index', columns=['length'])
         df = df.sort_index()
         df.to_csv(csv_path)
 
     def get_df(self):
+        """
+        Main function of the class. Convert the dataset from the directory to a Dataframe
+        """
         tele_exists = os.path.isdir(self.wav_tele_path)
         data = []
         for f_name in tqdm(os.listdir(self.wav_path), desc='Load Dataframe'):
