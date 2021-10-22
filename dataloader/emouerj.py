@@ -1,7 +1,7 @@
 from dataloader.base_dataset import BaseDataset
 
 
-class Cremad(BaseDataset):
+class Emouerj(BaseDataset):
     def __init__(self, top_path):
         self.annotation_mapping = {
             'a': 'Angry',
