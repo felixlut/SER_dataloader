@@ -5,7 +5,7 @@ import pandas as pd
 class Dataloader:
     def __init__(self, dataset_path):
         self.dataset_path = dataset_path
-        self.implemented_datasets = ['iemocap', 'emodb', 'ravdess', 'esd', 'cremad', 
+        self.implemented_datasets = ['iemocap', 'emodb', 'ravdess', 'esd', 'cremad', 'ekorpus'
                                         'mesd', 'oreau', 'emovo', 'emouerj', 'subesco', 'polish',
         ]
         self.depricated_datasets = ['meld']
