@@ -18,6 +18,6 @@ class Emouerj(BaseDataset):
         return {
             'actor_id'  : act_id,
             'lang'      : 'por',
-            'emo'       : self.annotation_mapping[emo],
+            'emo'       : emo,
             'dataset'   : 'emouerj',
         }
