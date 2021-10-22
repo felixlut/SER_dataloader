@@ -12,6 +12,6 @@ class Ekorpus(BaseDataset):
     def get_dataset_specific_dict(self, f_name):
         return {
             'lang'      : 'est',
-            'emo'       : self.wav_2_label[f_name],
+            'emo'       : self.wav_2_label[int(f_name)],
             'dataset'   : 'ekorpus',
         }
