@@ -15,7 +15,7 @@ class Subesco(BaseDataset):
         super().__init__(top_path + 'subesco/')
 
     def get_dataset_specific_dict(self, f_name):
-        gender, speaker_num, speaker_name, sentence_num, emo, take_num = f_name.split('_')
+        gender, speaker_num, speaker_name, sentence, sentence_num, emo, take_num = f_name.split('_')
         act_id = gender + speaker_num
         
         return {
