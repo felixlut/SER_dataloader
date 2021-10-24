@@ -41,6 +41,6 @@ class Cremad(BaseDataset):
             'text'      : self.text_mapping[sentence],
             'intensity' : intensity,
             'dataset'   : 'cremad',
-            'gender'    : self.actor_2_gender[act_id],
-            'age'       : self.actor_2_age[act_id],
+            'gender'    : self.actor_2_gender[int(act_id)],
+            'age'       : self.actor_2_age[int(act_id)],
         }
