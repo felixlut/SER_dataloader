@@ -1,3 +1,5 @@
+import pandas as pd
+
 from dataloader.base_dataset import BaseDataset
 
 
@@ -25,6 +27,8 @@ class Cremad(BaseDataset):
             'TSI': "The surface is slick",
             'WSI': "We'll stop in a couple of minutes",
         }
+        self.actor_2_age = pd.read_csv(self.path + 'actor_2_age.csv', index_col=0, squeeze=True).to_dict()
+        self.actor_2_gender = pd.read_csv(self.path + 'actor_2_gender.csv', index_col=0, squeeze=True).to_dict()
         super().__init__(top_path + 'cremad/')
 
     def get_dataset_specific_dict(self, f_name):
@@ -36,4 +40,6 @@ class Cremad(BaseDataset):
             'text'      : self.text_mapping[sentence],
             'intensity' : intensity,
             'dataset'   : 'cremad',
+            'gender'    : self.actor_2_gender[act_id],
+            'age'       : self.actor_2_age[act_id],
         }
