@@ -4,13 +4,13 @@ from dataloader.base_dataset import BaseDataset
 class Subesco(BaseDataset):
     def __init__(self, top_path):
         self.annotation_mapping = {
-            'ANGRY': 'Angry',
-            'HAPPY': 'Happy',
-            'SAD': 'Sad',
-            'NEUTRAL': 'Neutral',
-            'DISGUST': 'Disgusted',
-            'FEAR': 'Fear',
-            'SURPRISE': 'Surprised',
+            'ANGRY'     : 'Angry',
+            'HAPPY'     : 'Happy',
+            'SAD'       : 'Sad',
+            'NEUTRAL'   : 'Neutral',
+            'DISGUST'   : 'Disgusted',
+            'FEAR'      : 'Fear',
+            'SURPRISE'  : 'Surprised',
         }
         super().__init__(top_path + 'subesco/')
 
