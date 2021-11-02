@@ -5,15 +5,15 @@ class Emodb(BaseDataset):
     def __init__(self, top_path):
         self.actor_2_gender = {
             '03': 'M', 
-            '08': 'M', 
-            '09': 'M', 
+            '08': 'F', 
+            '09': 'F', 
             '10': 'M', 
             '11': 'M', 
             '12': 'M', 
-            '13': 'M', 
-            '14': 'M', 
+            '13': 'F', 
+            '14': 'F', 
             '15': 'M', 
-            '16': 'M', 
+            '16': 'F', 
         }
         self.annotation_mapping = {
             'N': 'Neutral',
