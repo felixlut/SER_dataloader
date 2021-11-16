@@ -63,7 +63,7 @@ class BaseDataset(ABC):
         files = os.listdir(file_paths)
         for f_name in tqdm(files, desc='Load Durations'):
             if f_name[:-4] not in wav_2_duration:
-                duration = librosa.get_duration(filename=self.wav_path + f_name)
+                duration = librosa.get_duration(filename=file_paths + f_name)
                 wav_2_duration[f_name[:-4]] = duration
         
         return wav_2_duration
