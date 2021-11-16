@@ -79,8 +79,10 @@ class BaseDataset(ABC):
         Main function of the class. Convert the dataset from the directory to a Dataframe
         """
         tele_exists = os.path.isdir(self.wav_tele_path)
+        native_exists = os.path.isdir(self.wav_path)
+        file_paths = self.wav_tele_path if tele_exists else self.wav_path
         data = []
-        for f_name in tqdm(os.listdir(self.wav_path), desc='Load Dataframe'):
+        for f_name in tqdm(os.listdir(file_paths), desc='Load Dataframe'):
             # Cut-off the file-extension
             f_name = f_name[:-4]
             
@@ -93,9 +95,9 @@ class BaseDataset(ABC):
                 dataset_specific_dict = self.get_dataset_specific_dict(f_name)
 
                 # Set the dataset independent fields            
-                dataset_specific_dict['wav_path'] = os.path.abspath(self.wav_path + f_name + '.wav')
                 dataset_specific_dict['file_name'] = f_name
                 dataset_specific_dict['length'] = self.wav_2_duration[f_name]
+                if native_exists: dataset_specific_dict['wav_path'] = os.path.abspath(self.wav_path + f_name + '.wav')
                 if tele_exists: dataset_specific_dict['wav_tele_path'] = os.path.abspath(self.wav_tele_path + f_name + '.wav')
                 if 'sentiment' not in dataset_specific_dict: 
                     dataset_specific_dict['sentiment'] = self.emo_2_sentiment[dataset_specific_dict['emo']]
@@ -104,5 +106,5 @@ class BaseDataset(ABC):
 
         df = pd.DataFrame(data)
         # Make sure that a set of fields are present in the data
-        assert set(['lang', 'wav_path', 'emo', 'length']).issubset(set(df.columns))
+        assert set(['lang', 'emo', 'length']).issubset(set(df.columns))
         return df
