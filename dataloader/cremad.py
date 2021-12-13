@@ -35,7 +35,7 @@ class Cremad(BaseDataset):
     def get_dataset_specific_dict(self, f_name):
         act_id, sentence, emo, intensity = f_name.split('_')
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'lang'      : 'eng',
             'emo'       : self.annotation_mapping[emo],
             'text'      : self.text_mapping[sentence],

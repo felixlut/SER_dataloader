@@ -15,7 +15,7 @@ class Polish(BaseDataset):
         gender = act_id[0]
         emo = rest[0]
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'lang'      : 'pol',
             'gender'    : gender,
             'emo'       : self.annotation_mapping[emo],

@@ -22,7 +22,7 @@ class Ravdess(BaseDataset):
     def get_dataset_specific_dict(self, f_name):
         mod, vocal, emo, intensity, sentence, rep, act_id = f_name.split('-')
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'lang'      : 'eng',
             'emo'       : self.annotation_mapping[emo],
             'text'      : self.text_mapping[sentence],

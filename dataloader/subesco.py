@@ -19,7 +19,7 @@ class Subesco(BaseDataset):
         act_id = gender + speaker_num
         
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'lang'      : 'ban',
             'gender'    : gender,
             'emo'       : self.annotation_mapping[emo],

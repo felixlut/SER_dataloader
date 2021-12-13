@@ -19,7 +19,7 @@ class Emovo(BaseDataset):
         emo, act_id, sentence = f_name.split('-')
 
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'it',
             'dataset'   : 'emovo',

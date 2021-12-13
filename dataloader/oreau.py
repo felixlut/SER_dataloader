@@ -23,7 +23,7 @@ class Oreau(BaseDataset):
         utterance = f_name[2:5]
         emo = f_name[5]
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'fr',
             'gender'    : self.actor_dict['gender'][act_id] if act_id in self.actor_dict['gender'] else None,

@@ -29,7 +29,7 @@ class Emodb(BaseDataset):
     def get_dataset_specific_dict(self, f_name):
         act_id = f_name[:2]
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'emo'       : self.annotation_mapping[f_name[5]],
             'gender'    : self.actor_2_gender[act_id],
             'lang'      : 'ger',

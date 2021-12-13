@@ -28,7 +28,7 @@ class Meld(BaseDataset):
     def get_dataset_specific_dict(self, f_name):
         act_id = self.wav_2_actor[f_name]
         return {
-            'actor_id'      : act_id if act_id in self.main_characters else 'Other',
+            'actor_id'      : str(act_id) if act_id in self.main_characters else 'Other',
             'lang'          : 'eng',
             'emo'           : self.annotation_mapping[self.wav_2_label[f_name]],
             'sentiment'     : self.wav_2_sentiment[f_name].capitalize(),

@@ -16,7 +16,7 @@ class Emouerj(BaseDataset):
         act_id = f_name[:3]
         emo = self.annotation_mapping[f_name[3]]
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'lang'      : 'por',
             'gender'    : gender,
             'emo'       : emo,

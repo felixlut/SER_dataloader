@@ -18,7 +18,7 @@ class Esd(BaseDataset):
         act_id = int(f_name[:4])
         lang = 'chi' if act_id <= 10 else 'eng'
         return {
-            'actor_id'  : act_id,
+            'actor_id'  : str(act_id),
             'lang'      : lang,
             'gender'    : self.actor_2_gender[int(act_id)],
             'set'       : self.wav_2_set[f_name],

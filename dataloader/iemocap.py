@@ -81,7 +81,7 @@ class Iemocap(BaseDataset):
         return {
             'impro/script'  : 'impro' if 'impro' in f_name else 'script',
             'session'       : actor_id[1],
-            'actor_id'      : actor_id,
+            'actor_id'      : str(actor_id),
             'gender'        : actor_id[-1:],
             'lang'          : 'eng',
             'emo'           : self.annotation_mapping[self.wav_2_label[f_name]],
