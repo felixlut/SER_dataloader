@@ -20,6 +20,7 @@ class Emovo(BaseDataset):
 
         return {
             'actor_id'  : str(act_id),
+            'gender'    : str(act_id[0]).capitalize(),
             'emo'       : self.annotation_mapping[emo],
             'lang'      : 'it',
             'dataset'   : 'emovo',
