@@ -1,32 +1,37 @@
-import pandas as pd
-import os
-from tqdm import tqdm
-
-from . import util
+from dataloader.base_dataset import BaseDataset
 
 
-class Emodb:
-
+class Emodb(BaseDataset):
     def __init__(self, top_path):
-        self.path = top_path + 'emodb'
-        self.df = self.get_df()
+        self.actor_2_gender = {
+            '03': 'M', 
+            '08': 'F', 
+            '09': 'F', 
+            '10': 'M', 
+            '11': 'M', 
+            '12': 'M', 
+            '13': 'F', 
+            '14': 'F', 
+            '15': 'M', 
+            '16': 'F', 
+        }
+        self.annotation_mapping = {
+            'N': 'Neutral',
+            'F': 'Happy',
+            'T': 'Sad',
+            'W': 'Angry',
+            'L': 'Bored',
+            'E': 'Disgusted',
+            'A': 'Fear'
+        }
+        super().__init__(top_path + 'emodb-data/')
 
-
-    def get_df(self):
-        wav_2_duration = util._get_duration_dict(self.path + '/wav/', self.path + 'wav_2_duration.csv')
-        data = []
-        for f_name in tqdm(os.listdir(self.path + '/wav/')):
-            act_id = f_name[:2]
-            emo = f_name[5]
-            f_path = self.path + os.sep + f_name
-            f_path = os.path.abspath(f_path)
-
-            data.append({
-                'actor_id'  : act_id,
-                'lang'      : 'ger',
-                'wav_path'  : f_path,
-                'emo'       : emo,
-                'length'    : wav_2_duration[f_name[:-4]]
-            })
-
-        return pd.DataFrame(data)
+    def get_dataset_specific_dict(self, f_name):
+        act_id = f_name[:2]
+        return {
+            'actor_id'  : str(act_id),
+            'emo'       : self.annotation_mapping[f_name[5]],
+            'gender'    : self.actor_2_gender[act_id],
+            'lang'      : 'ger',
+            'dataset'   : 'emodb',
+        }

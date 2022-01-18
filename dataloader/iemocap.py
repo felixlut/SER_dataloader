@@ -1,21 +1,36 @@
-import pandas as pd
 import os
-from tqdm import tqdm
+import pandas as pd
 
-from . import util
+from dataloader.base_dataset import BaseDataset
 
 
-class Iemocap:
-
+class Iemocap(BaseDataset):
     def __init__(self, top_path):
         self.path = top_path + 'iemocap/'
-        self.df = self.get_df()
-
+        self.annotation_mapping = {
+            'ang': 'Angry',
+            'hap': 'Happy',
+            'exc': 'Excited', 
+            'sad': 'Sad',
+            'neu': 'Neutral',
+            'fru': 'Frustrated',
+            'fea': 'Fear',
+            'sur': 'Surprised',
+            'dis': 'Disgusted',
+            'xxx': 'xxx',
+            'oth': 'Other',
+        }
+        self.file_2_transcript = self._get_transcript_dict()
+        self.wav_2_label = self._get_label_dict()
+        super().__init__(self.path)
 
     def _get_label_dict(self):
         if os.path.isfile(self.path + 'wav_2_label.csv'):
-            return pd.read_csv(self.path + 'wav_2_label.csv', header=None, index_col=0, squeeze=True).to_dict()
+            return pd.read_csv(self.path + 'wav_2_label.csv', index_col=0, squeeze=True).to_dict()
+        else:
+            raise NotImplementedError("wav_2_label.csv not found, and labels cant be extracted from current dataset version")
 
+        # This code only works on the original dataset
         labels = ['neu', 'fru', 'hap', 'sad', 'ang', 'fea', 'exc', 'sur', 'dis', 'xxx', 'oth']
         sessions = ['Session' + str(i) for i in range(1, 6)]
         wav_to_label = {}
@@ -38,8 +53,11 @@ class Iemocap:
     def _get_transcript_dict(self):
         csv_path = self.path + 'wav_2_transcript.csv'
         if os.path.isfile(csv_path):
-            return pd.read_csv(csv_path, header=None, index_col=0, squeeze=True).to_dict()
+            return pd.read_csv(csv_path, index_col=0, squeeze=True).to_dict()
+        else:
+            raise NotImplementedError("wav_2_transcript.csv not found, and transcripts cant be extracted from current dataset version")
 
+        # This code only works on the original dataset
         file_names = [f_name[:-4] for f_name in os.listdir(self.path + '/wav/')]
         sessions = ['Session' + str(i) for i in range(1, 6)]
         wav_to_transcript = {}
@@ -58,30 +76,15 @@ class Iemocap:
         df.to_csv('wav_2_transcript.csv')
         return wav_to_transcript
 
-    def get_df(self):
-        wav_path = self.path + '/wav/wav/'
-        file_2_transcript = self._get_transcript_dict()
-        wav_2_label = self._get_label_dict()
-        wav_2_duration = util._get_duration_dict(wav_path, self.path + 'wav_2_duration.csv')
-        data = []
-        for f_name in tqdm(os.listdir(wav_path), desc='Dataframe'):
-            f_path = wav_path + f_name
-            f_path = os.path.abspath(f_path)
-
-            emo = wav_2_label[f_name[:-4]]
-            actor_id = f_name[2:5]
-
-            data.append({
-                'impro/script'  : 'impro' if 'impro' in f_name else 'script',
-                'session'       : actor_id[:-1],
-                'actor_id'      : actor_id,
-                'gender'        : actor_id[-1:],
-                'lang'          : 'eng',
-                'wav_path'      : f_path,
-                'file_name'     : f_name,
-                'emo'           : emo,
-                'text'          : file_2_transcript[f_name[:-4]],
-                'length'        : wav_2_duration[f_name[:-4]],
-            })
-
-        return pd.DataFrame(data)
+    def get_dataset_specific_dict(self, f_name):
+        actor_id = f_name[3:6]
+        return {
+            'impro/script'  : 'impro' if 'impro' in f_name else 'script',
+            'session'       : actor_id[1],
+            'actor_id'      : str(actor_id),
+            'gender'        : actor_id[-1:],
+            'lang'          : 'eng',
+            'emo'           : self.annotation_mapping[self.wav_2_label[f_name]],
+            'text'          : self.file_2_transcript[f_name],
+            'dataset'       : 'iemocap',
+        }
