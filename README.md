@@ -4,6 +4,14 @@ This project is part of a master's thesis for the: course DA231X - Degree Projec
 These scripts are meant to load and transform datasets into Dataframes for ease of use (that is, no actual data, just preparation scripts). The data is loaded by reading file_names from the corresponding dataset-directories (see below how for directory structure). 
 
 ## Get Started
+### Install
+Install with pip:
+```
+pip install git+https://github.com/felixlut/SER_dataloader.git@main
+```
+
+
+### Usage
 The package is meant to be accessed via python like this:
 
 ```python
