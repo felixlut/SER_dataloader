@@ -36,7 +36,7 @@ The data is supposed to be stored in ```.../datasets/{dataset_name}```, and shou
             ├── train.csv                       # Preset train/test/validation-splits 
             ├── test.csv
             ├── val.csv
-            └── meta_data.csv              # Possibly extra csv:s containing some metadata used for constructing the dataframes, ex. actor_2_gender.csv
+            └── meta_data.csv                   # Possibly extra csv:s containing some metadata used for constructing the dataframes, ex. actor_2_gender.csv
     
 ### Supported Datasets
 The following datasets are supported, and have to have the same directory name mentioned below (don't mind the inconsistency of the ```data``` postfix, kaggle is once again coming through with only the highest quality of data-handling). These can also be derived from the correspponding scripts.
