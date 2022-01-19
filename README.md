@@ -24,4 +24,16 @@ The data is supposed to be stored in ```.../datasets/{dataset_name}```, and shou
     - directories (either or both are fine):
         - wav/wav/ (contains all the wav_files, in the original quality)
         - wav_telephone/wav_telephone (wav_files after phone_filter)
-        - (Yes, 2 layers of wav(_telephone), kaggle datahandling is werid)
+        - (Yes, 2 layers of wav(_telephone), kaggle datahandling is weird)
+    
+### Supported Datasets
+The following datasets are supported, and have to have the same directory name mentioned below (don't mind the inconsistency of the ```data``` postfix, kaggle is once again coming through with only the highest quality of data-handling). These can also be derived from the correspponding scripts.
+* **Dataset - dataset_directory_name**
+* [Cremad-D](https://github.com/CheyneyComputerScience/CREMA-D) - ```cremad```
+* [ESD](https://github.com/HLTSingapore/Emotional-Speech-Data) - ```esd-data```
+* [Subesco](https://zenodo.org/record/4526477) - ```subesco```
+* [emoDB](https://www.kaggle.com/piyushagni5/berlin-database-of-emotional-speech-emodb) - ```emodb-data```
+* [MESD](https://data.mendeley.com/datasets/cy34mh68j9/1) - ```mesddata```
+* [EMOVO](http://voice.fub.it/activities/corpora/emovo/index.html) - ```emovodata```
+* [Oréau](https://zenodo.org/record/4405783) - ```oreaudata```
+* [emoUERJ](https://zenodo.org/record/5427549) - ```emouerj```
