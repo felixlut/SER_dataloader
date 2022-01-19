@@ -23,16 +23,20 @@ dataset_as_df = data.load_dataset(dataset_name)
 
 ## Data
 The data is supposed to be stored in ```.../datasets/{dataset_name}```, and should have the below described structure overall. 
-- dataset_name
-    - files:
-        - train.csv (pre-defined train/test/val splits)
-        - test.csv
-        - val.csv
-        - Maybe addition csv files storing dataset-specific info (ex. actor_2_gender.csv) 
-    - directories (either or both are fine):
-        - wav/wav/ (contains all the wav_files, in the original quality)
-        - wav_telephone/wav_telephone (wav_files after phone_filter)
-        - (Yes, 2 layers of wav(_telephone), kaggle datahandling is weird)
+
+    .
+    ├── datasets
+        ├── dataset_name
+            ├── wav/wav                         # 2 layers of wav, kaggle datahandling is weird...
+            |   ├── file_abc123.wav
+            |   └── ...
+            ├── wav_telephone/wav_telephone     # same as for wav, 2 layers cuz kaggle...
+            |   ├── file_abc123.wav
+            |   └── ...
+            ├── train.csv                       # Preset train/test/validation-splits 
+            ├── test.csv
+            ├── val.csv
+            └── meta_data.csv              # Possibly extra csv:s containing some metadata used for constructing the dataframes, ex. actor_2_gender.csv
     
 ### Supported Datasets
 The following datasets are supported, and have to have the same directory name mentioned below (don't mind the inconsistency of the ```data``` postfix, kaggle is once again coming through with only the highest quality of data-handling). These can also be derived from the correspponding scripts.
