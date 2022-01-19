@@ -33,9 +33,6 @@ The data is supposed to be stored in ```.../datasets/{dataset_name}```, and shou
             ├── wav_telephone/wav_telephone     # same as for wav, 2 layers cuz kaggle...
             |   ├── file_abc123.wav
             |   └── ...
-            ├── train.csv                       # Preset train/test/validation-splits 
-            ├── test.csv
-            ├── val.csv
             └── meta_data.csv                   # Possibly extra csv:s containing some metadata used for constructing the dataframes, ex. actor_2_gender.csv
     
 ### Supported Datasets
