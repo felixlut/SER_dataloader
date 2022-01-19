@@ -1,7 +1,7 @@
 # SER_dataloader
 This project is part of a master's thesis for the: course DA231X - Degree Project in Computer Science and Engineering, Second Cycle 30hp
 
-These scripts are meant to load and transform datasets into Dataframes for ease of use (that is, no actual data, just preparation scripts).
+These scripts are meant to load and transform datasets into Dataframes for ease of use (that is, no actual data, just preparation scripts). The data is loaded by reading file_names from the corresponding dataset-directories (see below how for directory structure). 
 
 ## Get Started
 The package is meant to be accessed via python like this:
