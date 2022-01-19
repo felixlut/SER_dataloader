@@ -9,7 +9,7 @@ The package is meant to be accessed via python like this:
 ```python
 from dataloader import Dataloader
 dataset_name = 'cremad' # /cremad/emodb/...
-data = Dataloader(data_args.data_path)
+data = Dataloader(data_args.data_path, force_reload=False) # After the first instance of this command, the dataset is cached. force_reload=True for circumventing the caching
 dataset_as_df = data.load_dataset(dataset_name)
 ```
 
