@@ -39,10 +39,10 @@ The data is supposed to be stored in ```.../datasets/{dataset_name}```, and shou
 The following datasets are supported, and have to have the same directory name mentioned below (don't mind the inconsistency of the ```data``` postfix, kaggle is once again coming through with only the highest quality of data-handling). These can also be derived from the correspponding scripts.
 * **Dataset - directory_name**
 * [Cremad-D](https://github.com/CheyneyComputerScience/CREMA-D) - ```cremad```
-* [ESD](https://github.com/HLTSingapore/Emotional-Speech-Data) - ```esd-data```
+* ~~[ESD](https://github.com/HLTSingapore/Emotional-Speech-Data) - ```esd-data```~~ (Changed license, no longer commercially viable)
 * [Subesco](https://zenodo.org/record/4526477) - ```subesco```
-* [emoDB](https://www.kaggle.com/piyushagni5/berlin-database-of-emotional-speech-emodb) - ```emodb-data```
+* ~~[emoDB](https://www.kaggle.com/piyushagni5/berlin-database-of-emotional-speech-emodb) - ```emodb-data```~~ (License not specified)
 * [MESD](https://data.mendeley.com/datasets/cy34mh68j9/1) - ```mesddata```
-* [EMOVO](http://voice.fub.it/activities/corpora/emovo/index.html) - ```emovodata```
+* ~~[EMOVO](http://voice.fub.it/activities/corpora/emovo/index.html) - ```emovodata```~~ (License not specified)
 * [Oréau](https://zenodo.org/record/4405783) - ```oreaudata```
 * [emoUERJ](https://zenodo.org/record/5427549) - ```emouerj```
