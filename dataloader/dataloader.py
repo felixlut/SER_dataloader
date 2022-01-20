@@ -5,17 +5,11 @@ import pandas as pd
 class Dataloader:
     def __init__(self, dataset_path):
         self.dataset_path = dataset_path
-        self.implemented_datasets = ['iemocap', 'emodb', 'ravdess', 'esd', 'cremad', 'ekorpus',
-                                        'mesd', 'oreau', 'emovo', 'emouerj', 'subesco', 'polish',
-        ]
-        self.depricated_datasets = ['meld']
-
+        self.implemented_datasets = ['cremad', 'esd', 'subesco', 'emodb', 'mesd', 'emovo', 'oreau', 'emouerj']
 
     def load_dataset(self, dataset, force_reload=False):
         if dataset not in self.implemented_datasets:
             raise NotImplementedError("{} not in {}!".format(dataset, self.implemented_datasets))
-        elif dataset in self.depricated_datasets:
-            raise DeprecationWarning("{} no longer supported!".format(dataset))            
 
         if force_reload or not hasattr(self, dataset):
             mod_name = '.' + dataset
