@@ -37,7 +37,7 @@ The data is supposed to be stored in ```.../datasets/{dataset_name}```, and shou
     
 ### Supported Datasets
 The following datasets are supported, and have to have the same directory name mentioned below (don't mind the inconsistency of the ```data``` postfix, kaggle is once again coming through with only the highest quality of data-handling). These can also be derived from the correspponding scripts.
-* **Dataset - dataset_directory_name**
+* **Dataset - directory_name**
 * [Cremad-D](https://github.com/CheyneyComputerScience/CREMA-D) - ```cremad```
 * [ESD](https://github.com/HLTSingapore/Emotional-Speech-Data) - ```esd-data```
 * [Subesco](https://zenodo.org/record/4526477) - ```subesco```
